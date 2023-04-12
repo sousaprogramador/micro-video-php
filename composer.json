@@ -1,0 +1,19 @@
+{
+    "name": "mateussousa/app-php-catalogo-video",
+    "description": "App With PHP - Catalogo de Videos",
+    "authors": [
+        {
+            "name": "Mateus Sousa",
+            "email": "sousa.programador@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Core\\": "src/Core/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "mockery/mockery": "^1.5"
+    }
+}
