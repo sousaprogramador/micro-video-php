@@ -12,12 +12,12 @@ class CategoryUnitTest extends TestCase
   {
     $category = new Category(
       name: 'New Cat',
-      description: 'New desct',
+      description: 'New desc',
       isActive: true
     );
 
     $this->assertEquals('New Cat', $category->name);
-    $this->assertEquals('New desct', $category->description);
+    $this->assertEquals('New desc', $category->description);
     $this->assertEquals(true, $category->isActive);
   }
 
@@ -76,6 +76,20 @@ class CategoryUnitTest extends TestCase
         description: 'New desct',
         isActive: true
       );
+      $this->assertTrue(false);
+    } catch (\Throwable $th) {
+      $this->assertInstanceOf(EntityValidationException::class, $th);
+    }
+  }
+
+  public function testExceptionDescription()
+  {
+    try {
+      new Category(
+        name: 'Name Cat',
+        description: random_bytes(999999)
+      );
+
       $this->assertTrue(false);
     } catch (\Throwable $th) {
       $this->assertInstanceOf(EntityValidationException::class, $th);
