@@ -39,15 +39,27 @@ class CreateCategoryUseCaseUnitTest extends TestCase
     $this->assertEquals($categoryName, $responseUseCase->name);
     $this->assertEquals('', $responseUseCase->description);
 
-    /**
-     * Spies
-     */
+    Mockery::close();
+  }
+
+  public function testCallInsertMethod()
+  {
+    $uuid = (string) Uuid::uuid4()->toString();
+    $categoryName = 'name cat';
+
+    $this->mockEntity = Mockery::mock(Category::class, [
+      $uuid,
+      $categoryName,
+    ]);
+
+    $this->mockInputDto = Mockery::mock(CategoryCreateInputDto::class, [
+      $categoryName,
+    ]);
+
     $this->spy = Mockery::spy(stdClass::class, CategoryRepositoryInterface::class);
     $this->spy->shouldReceive('insert')->andReturn($this->mockEntity);
     $useCase = new CreateCategoryUseCase($this->spy);
     $responseUseCase = $useCase->execute($this->mockInputDto);
     $this->spy->shouldHaveReceived('insert');
-
-    Mockery::close();
   }
 }
