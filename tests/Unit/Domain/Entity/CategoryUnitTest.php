@@ -17,6 +17,7 @@ class CategoryUnitTest extends TestCase
       isActive: true
     );
 
+    $this->assertNotEmpty($category->createdAt());
     $this->assertNotEmpty($category->id());
     $this->assertEquals('New Cat', $category->name);
     $this->assertEquals('New desc', $category->description);
@@ -66,6 +67,7 @@ class CategoryUnitTest extends TestCase
       description: 'new_desct',
     );
 
+    $this->assertEquals($uuid, $category->id());
     $this->assertEquals('new_cat', $category->name);
     $this->assertEquals('new_desct', $category->description);
   }
