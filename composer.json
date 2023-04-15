@@ -17,6 +17,6 @@
         "mockery/mockery": "^1.5"
     },
     "require": {
-        "ramsey/uuid": "*"
+        "ramsey/uuid": "^4.7"
     }
 }
