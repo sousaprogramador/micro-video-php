@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\App\Http;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Category;
 use App\Repositories\Eloquent\CategoryEloquentRepository;
